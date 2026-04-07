@@ -20,11 +20,10 @@ public class UsuarioDAO {
             Connection conn = Conexao.conectar();
             PreparedStatement stmt = null;
             
-            stmt = conn.prepareStatement("INSERT INTO usuarios (nome, usuario, senha, admin) VALUES (?,?,?,?)");
-            stmt.setString(1, usuario.getNome());
-            stmt.setString(2, usuario.getUsuario());
+            stmt = conn.prepareStatement("INSERT INTO usuario (usuario, nome, senha) VALUES (?,?,?)");
+            stmt.setString(1, usuario.getUsuario());
+            stmt.setString(2, usuario.getNome());
             stmt.setString(3, usuario.getSenha());
-            stmt.setBoolean(4, false);
             
             stmt.executeUpdate();
             
@@ -40,7 +39,7 @@ public class UsuarioDAO {
             PreparedStatement stmt = null;
             ResultSet rs = null;
             
-            stmt = conn.prepareStatement("SELECT * FROM usuarios WHERE usuarios.usuario = ? AND usuarios.senha = ?");
+            stmt = conn.prepareStatement("SELECT * FROM usuario WHERE usuario = ? AND senha = ?");
             stmt.setString(1, usuario);
             stmt.setString(2, senha);
             
@@ -50,7 +49,6 @@ public class UsuarioDAO {
                 user.setNome(rs.getString("nome"));
                 user.setUsuario(rs.getString("usuario"));
                 user.setSenha(rs.getString("senha"));
-                user.setAdmin(rs.getBoolean("admin"));
             }
             
         } catch(SQLException e) {

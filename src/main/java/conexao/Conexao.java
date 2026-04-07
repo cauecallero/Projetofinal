@@ -14,9 +14,9 @@ import javax.swing.JOptionPane;
  * @author Usuario
  */
 public class Conexao {
-    private static final String url = "jdbc:mysql://localhost:3306/gerenciador";
+    private static final String url = "jdbc:mysql://localhost:3306/todolist";
     private static final String user = "root";
-    private static final String senha = "1234";
+    private static final String senha = "Jo23ao0107*";
     
     public static Connection conectar () {
         Connection conn = null;
